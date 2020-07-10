@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     TextView timerText;
     CountDownTimer countDownTimer;
     MediaPlayer mediaPlayer;
-    final int MAX_TIME = 720; //in seconds (12 minutes)
+    final int MAX_TIME_SECS = 720; //in seconds (12 minutes)
     final int SEEK_BAR_STEP = 5;
     boolean timerActive = false;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         //We like allow the Seek bar to traverse in units of 5 seconds. [0 - 144 instead of 0 - 720]
         //because changing the seek bar by each second can be overwhelming to the user.
-        timerSeekBar.setMax(MAX_TIME / SEEK_BAR_STEP);
+        timerSeekBar.setMax(MAX_TIME_SECS / SEEK_BAR_STEP);
         timerSeekBar.setProgress(0);
         timerSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -108,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
         timerText.setText("00:00");
         timerButton.setText("START");
         timerActive = false;
-
-        if (mediaPlayer.isPlaying())
-            mediaPlayer.pause();
 
     }
 }
